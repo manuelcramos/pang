@@ -1,0 +1,135 @@
+/* Fondo del menú principal */
+#menu {
+   z-index: 1000;  /* Hace que el menú esté en la capa más alta, asegurando que siempre esté encima de todos los demás elementos */
+  position: absolute;               
+  /* Lo coloca encima de todo el contenido y permite posicionarlo en la pantalla */
+    top: 0;                         
+  /* Lo pega al borde superior de la pantalla */
+    left: 0;                        
+  /* Lo pega al borde izquierdo de la pantalla */
+    width: 100%;                    
+  /* Ancho completo de la pantalla */
+    height: 100%;                   
+  /* Alto completo de la pantalla */
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); 
+  /* Degradado colorido que va en diagonal para fondo más atractivo */
+    background-size: 400% 400%;
+  /* Amplía el tamaño del fondo para permitir que se anime el degradado */
+  animation: fondoAnimado 10s ease infinite; 
+  /* Aplica una animación que mueve el fondo suavemente y en bucle infinito */
+    display: flex;                  
+  /* Usa flexbox para ordenar el contenido interno */
+    flex-direction: column;         
+  /* Los elementos internos se apilan verticalmente uno debajo del otro */
+    justify-content: center;        
+  /* Centra verticalmente los elementos hijos dentro del menú */
+    align-items: center;            
+  /* Centra horizontalmente los elementos hijos dentro del menú */
+    gap: 30px;                     
+  /* Espacio de 30px entre los elementos hijos (como los botones) */
+    color: white;                  
+  /* Color del texto en blanco para que se vea sobre el fondo oscuro */
+    font-family: 'Segoe UI', sans-serif; 
+  /* Fuente limpia y moderna para el texto */
+    text-align: center;            
+  /* Centra el texto dentro de cada elemento */
+    animation: aparecer 1.5s ease;  
+  /* Animación suave para que el menú aparezca con efecto */
+}
+
+/* Animación del fondo en movimiento */
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  /* Fondo comienza en la posición inicial */
+    50% { background-position: 100% 50%; }
+  /* Fondo se mueve a la derecha a la mitad de la animación */
+    100% { background-position: 0% 50%; }
+  /* Fondo vuelve a la posición inicial para repetir */
+}
+/* Animación para que el menú aparezca de forma elegante */
+@keyframes aparecer {
+  from {
+    opacity: 0;                  
+    /* Al principio el menú está invisible */
+        transform: scale(0.9);      
+    /* Menú un poco más pequeño al principio */
+  }
+  to {
+    opacity: 1;                 
+    /* Termina siendo totalmente visible */
+        transform: scale(1);        
+    /* Menú con tamaño normal */
+  }
+}
+
+/* Botones del menú       */
+/* ---------------------- */
+#menu button {
+  padding: 15px 40px;               /* Espaciado interno: 15px arriba y abajo, 40px a los lados */
+  font-size: 22px;                  /* Tamaño de la letra del botón */
+  font-weight: bold;               /* Texto en negrita */
+  cursor: pointer;                 /* Cambia el cursor a una mano al pasar el ratón */
+  color: #fff;                     /* Color del texto: blanco */
+  background: rgb(2, 72, 247);     /* Color de fondo azul eléctrico */
+  border: none;                    /* Sin bordes visibles */
+  border-radius: 12px;             /* Bordes redondeados en las esquinas */
+  box-shadow: 0 0 15px rgb(2, 72, 247); /* Sombra tipo neón azul alrededor del botón */
+  transition: all 0.3s ease;       /* Transición suave para cambios de estilo (como hover) */
+}
+
+
+/* Efecto al pasar el ratón por el botón */
+#menu button:hover {
+ background: rgb(2, 72, 247);     /* Mantiene el mismo fondo azul */
+  box-shadow: 0 0 25px rgb(2, 72, 247); /* Aumenta el brillo de la sombra al pasar el ratón */
+  transform: scale(1.1);           /* Hace que el botón se agrande un 10% */}
+
+/* Área de juego */
+#game {
+   z-index: 1; /* El área del juego tiene una capa baja, para que esté por debajo del menú y elementos del jugador y las bolas */
+ width: 800px;                    /* Ancho del área del juego en píxeles */
+  height: 600px;                   /* Alto del área del juego en píxeles */
+  background: #000;                /* Fondo negro para simular el fondo del juego */
+  margin: 0 auto;                  /* Centra horizontalmente el área en la página */
+  position: relative;             /* Permite posicionar elementos hijos con position: absolute */
+  overflow: hidden;               /* Oculta cualquier parte de los elementos que sobresalga del contenedor */
+  border: 5px solid #0ff;          /* Borde de color cian (azul claro) de 5px de grosor */
+  border-radius: 15px;             /* Bordes redondeados del área del juego */
+}
+
+/* Jugador */
+#player {
+ z-index: 10; /* El jugador está en una capa superior a las bolas y al área del juego, pero por debajo de los disparos para que se vean bien */
+  width: 50px; /* tamaño ancho más pequeño */
+  height: 50px; /* tamaño alto más pequeño */
+ /* background-image: url('player.png');  aquí pones el nombre de tu imagen para que el jugador tenga una foto o un gif */
+  background: yellow; /* color amarillo */
+  position: absolute; /* Esto hace que el elemento se coloque en una posición fija relativa a su contenedor más cercano con posición relativa. Es decir, puedes moverlo libremente usando top, bottom, left, right */
+  bottom: 0;  /* Esto posiciona el borde inferior del elemento justo pegado al borde inferior del contenedor */
+  left: 375px; /* Esto posiciona el borde izquierdo del elemento a 375 píxeles desde el borde izquierdo del contenedor */
+  border-radius: 50%; /* para que sea redondo (bola) */
+}
+
+/* Disparos que lanza el jugador */
+/* --------------------------- */
+.bullet {
+   z-index: 15; /* Los disparos se muestran encima del jugador, las bolas y el área de juego para que siempre sean visibles */
+  width: 5px;                      /* Ancho del disparo: 5 píxeles (delgado) */
+  height: 20px;                    /* Alto del disparo: 20 píxeles (alargado) */
+  background: red;                 /* Color del disparo: rojo */
+  position: absolute;             /* Se posiciona libremente dentro del área de juego */
+}
+
+/* Bolas */
+.ball {
+  z-index: 5; /* Las bolas están en una capa superior al fondo del juego, pero debajo del jugador y disparos */
+ position: absolute;             /* Posición libre dentro del contenedor */
+  border-radius: 50%;             /* Bordes redondeados al 100%, haciendo que la bola sea circular */
+  background: limegreen;          /* Color verde lima para distinguirla fácilmente */
+}
+
+
+
+
+
+

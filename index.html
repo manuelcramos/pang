@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Esto indica que el documento está usando HTML5 -->
+<html lang="es">
+<!-- El idioma del sitio es español -->
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Esto permite usar caracteres como ñ, tildes, etc. correctamente -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Hace que la web se vea bien en móviles, tablets y pantallas pequeñas -->
+
+  <title>Pang Game</title>
+  <!-- Título que aparece en la pestaña del navegador -->
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Se conecta el archivo de estilos externo llamado "style.css" -->
+</head>
+
+<body>
+  <!-- Aquí comienza el contenido visual de la página -->
+
+  <!-- MENÚ PRINCIPAL -->
+  <div id="menu">
+    <!-- Contenedor para el menú inicial del juego -->
+
+    <h1>Pang Game</h1>
+    <!-- Título grande que aparece arriba del menú -->
+
+    <!-- Botones para seleccionar la dificultad del juego -->
+    <button onclick="startGame('easy')">Fácil</button>
+    <!-- Cuando se hace clic, empieza el juego con una bola pequeña -->
+
+    <button onclick="startGame('medium')">Media</button>
+    <!-- Empieza el juego con una bola de tamaño mediano -->
+
+    <button onclick="startGame('hard')">Difícil</button>
+    <!-- Empieza el juego con una bola grande -->
+  </div>
+
+  <!-- CONTENEDOR DE VIDAS -->
+  <div id="lives-container">
+    Vidas: <span id="lives">3</span>
+  </div>
+
+  <!-- ÁREA DE JUEGO -->
+  <div id="game" style="display: none;">
+    <!-- Zona donde se juega. Al principio está oculta (display: none), se muestra al iniciar el juego -->
+
+    <div id="player"></div>
+    <!-- Este es el personaje del jugador, se moverá de izquierda a derecha -->
+  </div>
+
+  <!-- SCRIPT DE FUNCIONAMIENTO DEL JUEGO -->
+  <script src="script.js"></script>
+  <!-- Aquí se conecta el archivo JavaScript donde está toda la lógica del juego: moverse, disparar, crear bolas, colisiones, etc. -->
+
+</body>
+</html>
+
+
+
+
+
+
+
