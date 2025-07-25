@@ -118,6 +118,8 @@
   height: 20px;                    /* Alto del disparo: 20 píxeles (alargado) */
   background: red;                 /* Color del disparo: rojo */
   position: absolute;             /* Se posiciona libremente dentro del área de juego */
+   box-shadow: 0 0 8px 2px red;
+  border-radius: 2px;
 }
 
 /* Bolas */
@@ -126,10 +128,42 @@
  position: absolute;             /* Posición libre dentro del contenedor */
   border-radius: 50%;             /* Bordes redondeados al 100%, haciendo que la bola sea circular */
   background: limegreen;          /* Color verde lima para distinguirla fácilmente */
+  background: radial-gradient(circle at center, #aaffaa 0%, #008800 80%);
+  box-shadow: inset -3px -3px 10px rgba(0,0,0,0.3);
 }
 
+/* Contenedor de los botones táctiles para móviles */
+.touch-controls {
+  position: fixed;               /* Fija el contenedor en la pantalla, siempre visible */
+  bottom: 20px;                 /* Separado 20px del borde inferior de la pantalla */
+  left: 50%;                   /* Posicionado en el centro horizontal (50% desde la izquierda) */
+  transform: translateX(-50%); /* Se mueve hacia la izquierda la mitad de su ancho para centrar exactamente */
+  display: flex;               /* Usa flexbox para colocar los botones en fila */
+  gap: 20px;                   /* Espacio de 20px entre cada botón */
+  z-index: 999;                /* Lo coloca por encima de casi todos los elementos, para que siempre se vea */
+}
 
+/* Estilo para cada botón dentro del contenedor táctil */
+.touch-controls button {
+  font-size: 24px;              /* Tamaño de letra grande para que sea fácil de tocar */
+  padding: 15px 20px;           /* Espacio interno: 15px arriba y abajo, 20px a los lados */
+  border-radius: 10px;          /* Bordes redondeados para que los botones se vean más amigables */
+  border: none;                 /* Sin borde visible */
+  background-color: #333;       /* Fondo gris oscuro para que resalte sobre la mayoría de fondos */
+  color: white;                 /* Texto blanco para buen contraste */
+  box-shadow: 0 0 10px #0008;  /* Sombra sutil alrededor del botón para dar profundidad */
+  cursor: pointer;             /* Cambia el cursor a mano para indicar que es clicable */
+}
 
+/* Efecto cuando el botón está siendo pulsado */
+.touch-controls button:active {
+  background-color: #555;       /* Fondo gris más claro mientras se mantiene presionado el botón */
+}
+
+/* Evita que los usuarios puedan seleccionar texto o elementos dentro de estas áreas y objetos */
+#game, #player, .ball, .bullet {
+  user-select: none;            /* Esto evita la selección accidental con el cursor o el dedo */
+}
 
 
 
